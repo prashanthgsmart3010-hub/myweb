@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewable Energy Systems Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar h1 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .nav-menu {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 15px;
+        }
+        
+        .nav-menu button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .nav-menu button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav-menu button.active {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+            width: calc(100% - 250px);
+        }
+        
+        .activity-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s;
+        }
+        
+        .activity-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .activity-section h2 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .diagram-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+        
+        .diagram-container h3 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .explanation {
+            line-height: 1.8;
+            color: #333;
+            font-size: 16px;
+            text-align: justify;
+        }
+        
+        .explanation h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .specs {
+            background: #e8eaf6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .specs h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .specs ul {
+            margin-left: 20px;
+        }
+        
+        .specs li {
+            margin-bottom: 8px;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <h1>Renewable Energy Portfolio</h1>
+        <ul class="nav-menu">
+            <li><button onclick="showActivity(1)" id="btn1" class="active">Activity 1<br>Wave Energy System</button></li>
+            <li><button onclick="showActivity(2)" id="btn2">Activity 2<br>Biomass Biogas System</button></li>
+            <li><button onclick="showActivity(3)" id="btn3">Activity 3<br>Geothermal Power Plant</button></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <!-- Activity 1: Wave Energy -->
+        <section id="activity1" class="activity-section active">
+            <h2>Activity 1: Wave Energy Conversion System for Coastal Desalination Plant</h2>
+            
+            <div class="diagram-container">
+                <h3>System Block Diagram</h3>
+                <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Ocean Waves -->
+                    <rect x="20" y="50" width="180" height="100" fill="#4fc3f7" stroke="#0288d1" stroke-width="3" rx="10"/>
+                    <text x="110" y="95" text-anchor="middle" font-size="16" font-weight="bold" fill="#01579b">OCEAN WAVES</text>
+                    <text x="110" y="115" text-anchor="middle" font-size="12" fill="#01579b">(Kinetic Energy)</text>
+                    
+                    <!-- Arrow 1 -->
+                    <path d="M 200 100 L 260 100" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    <text x="230" y="90" text-anchor="middle" font-size="11" fill="#333">Wave Motion</text>
+                    
+                    <!-- Wave Energy Converter -->
+                    <rect x="260" y="50" width="180" height="100" fill="#81c784" stroke="#388e3c" stroke-width="3" rx="10"/>
+                    <text x="350" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b5e20">WAVE ENERGY</text>
+                    <text x="350" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b5e20">CONVERTER (WEC)</text>
+                    <text x="350" y="125" text-anchor="middle" font-size="11" fill="#1b5e20">(Point Absorber/OWC)</text>
+                    
+                    <!-- Arrow 2 -->
+                    <path d="M 440 100 L 500 100" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    <text x="470" y="90" text-anchor="middle" font-size="11" fill="#333">Mechanical</text>
+                    
+                    <!-- Power Take-Off -->
+                    <rect x="500" y="50" width="180" height="100" fill="#ffb74d" stroke="#f57c00" stroke-width="3" rx="10"/>
+                    <text x="590" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">POWER TAKE-OFF</text>
+                    <text x="590" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">SYSTEM (PTO)</text>
+                    <text x="590" y="125" text-anchor="middle" font-size="11" fill="#e65100">(Hydraulic/Linear Gen)</text>
+                    
+                    <!-- Arrow 3 -->
+                    <path d="M 680 100 L 740 100" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    <text x="710" y="90" text-anchor="middle" font-size="11" fill="#333">AC Power</text>
+                    
+                    <!-- Generator -->
+                    <rect x="740" y="50" width="140" height="100" fill="#9575cd" stroke="#512da8" stroke-width="3" rx="10"/>
+                    <text x="810" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#311b92">ELECTRICAL</text>
+                    <text x="810" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#311b92">GENERATOR</text>
+                    
+                    <!-- Arrow down from Generator -->
+                    <path d="M 810 150 L 810 210" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Power Conditioning -->
+                    <rect x="730" y="210" width="160" height="80" fill="#ef5350" stroke="#c62828" stroke-width="3" rx="10"/>
+                    <text x="810" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">POWER</text>
+                    <text x="810" y="260" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">CONDITIONING</text>
+                    <text x="810" y="278" text-anchor="middle" font-size="10" fill="#fff">(Rectifier/Inverter)</text>
+                    
+                    <!-- Arrow down -->
+                    <path d="M 810 290 L 810 350" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Distribution -->
+                    <rect x="650" y="350" width="320" height="80" fill="#26a69a" stroke="#00796b" stroke-width="3" rx="10"/>
+                    <text x="810" y="385" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">POWER DISTRIBUTION SYSTEM</text>
+                    <text x="810" y="408" text-anchor="middle" font-size="11" fill="#fff">(Grid Integration / Direct Supply)</text>
+                    
+                    <!-- Arrows to applications -->
+                    <path d="M 710 430 L 300 490" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    <path d="M 810 430 L 810 490" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    <path d="M 910 430 L 910 490" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Applications -->
+                    <rect x="200" y="490" width="200" height="70" fill="#7986cb" stroke="#303f9f" stroke-width="3" rx="10"/>
+                    <text x="300" y="520" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">DESALINATION</text>
+                    <text x="300" y="540" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">PLANT</text>
+                    <text x="300" y="555" text-anchor="middle" font-size="10" fill="#fff">(Reverse Osmosis)</text>
+                    
+                    <rect x="710" y="490" width="200" height="70" fill="#7986cb" stroke="#303f9f" stroke-width="3" rx="10"/>
+                    <text x="810" y="520" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">COASTAL</text>
+                    <text x="810" y="540" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">COMMUNITY</text>
+                    <text x="810" y="555" text-anchor="middle" font-size="10" fill="#fff">(Electricity Supply)</text>
+                    
+                    <!-- Arrow marker definition -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+            
+            <div class="specs">
+                <h4>System Specifications for Coastal Desalination Integration</h4>
+                <ul>
+                    <li><strong>Wave Energy Potential:</strong> 20-30 kW per meter of wave crest</li>
+                    <li><strong>WEC Type:</strong> Oscillating Water Column (OWC) or Point Absorber Array</li>
+                    <li><strong>Installed Capacity:</strong> 500 kW - 2 MW for medium-scale desalination</li>
+                    <li><strong>Desalination Capacity:</strong> 500-2000 m³/day freshwater production</li>
+                    <li><strong>Conversion Efficiency:</strong> 25-40% (wave to electrical)</li>
+                </ul>
+            </div>
+            
+            <div class="explanation">
+                <h3>System Explanation</h3>
+                <p>
+                    The wave energy conversion system harnesses the immense kinetic and potential energy present in ocean waves to generate electricity for coastal desalination operations. Ocean waves, driven by wind patterns and tidal forces, represent a consistent and renewable energy source with power densities ranging from 20-30 kW per meter of wave crest in favorable locations. The system begins with Wave Energy Converters (WECs) deployed offshore, typically using either Oscillating Water Column (OWC) technology or point absorber buoys that capture the vertical and horizontal motion of waves.
+                </p>
+                <p>
+                    The captured mechanical energy is transferred through a Power Take-Off (PTO) system, which converts the oscillatory motion into rotational energy using hydraulic pumps or linear generators. This mechanical energy drives electrical generators producing alternating current, which then passes through power conditioning units (rectifiers and inverters) to ensure stable voltage and frequency matching grid requirements. The generated electricity is distributed to two primary applications: powering energy-intensive reverse osmosis desalination membranes that remove salt from seawater, and supplying clean electricity to coastal communities.
+                </p>
+                <p>
+                    This integration is particularly relevant for water-scarce coastal regions where conventional desalination's high energy costs (3-4 kWh per cubic meter) can be offset by free wave energy. The system provides a sustainable solution for freshwater production while reducing carbon emissions and fossil fuel dependency. Countries like Australia, Portugal, and Chile are pioneering such integrated systems, demonstrating how coastal infrastructure can achieve energy independence while addressing water security challenges through nature-based renewable solutions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Activity 2: Biomass Biogas -->
+        <section id="activity2" class="activity-section">
+            <h2>Activity 2: Biomass-Based Biogas Generation System for Dairy Farm (100 Cattle)</h2>
+            
+            <div class="diagram-container">
+                <h3>System Block Diagram</h3>
+                <svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Biomass Input -->
+                    <rect x="40" y="50" width="160" height="90" fill="#8d6e63" stroke="#4e342e" stroke-width="3" rx="10"/>
+                    <text x="120" y="85" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">CATTLE WASTE</text>
+                    <text x="120" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">COLLECTION</text>
+                    <text x="120" y="125" text-anchor="middle" font-size="11" fill="#fff">100 Cattle</text>
+                    
+                    <!-- Arrow -->
+                    <path d="M 200 95 L 260 95" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <text x="230" y="85" text-anchor="middle" font-size="10">~1500 kg/day</text>
+                    
+                    <!-- Mixing Tank -->
+                    <rect x="260" y="50" width="160" height="90" fill="#66bb6a" stroke="#2e7d32" stroke-width="3" rx="10"/>
+                    <text x="340" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">MIXING &</text>
+                    <text x="340" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">PRE-TREATMENT</text>
+                    <text x="340" y="120" text-anchor="middle" font-size="10" fill="#fff">Slurry Formation</text>
+                    
+                    <!-- Arrow -->
+                    <path d="M 420 95 L 480 95" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    
+                    <!-- Anaerobic Digester (Main) -->
+                    <ellipse cx="600" cy="95" rx="110" ry="80" fill="#42a5f5" stroke="#1565c0" stroke-width="4"/>
+                    <text x="600" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">ANAEROBIC</text>
+                    <text x="600" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">DIGESTER</text>
+                    <text x="600" y="115" text-anchor="middle" font-size="11" fill="#fff">35-40°C</text>
+                    <text x="600" y="130" text-anchor="middle" font-size="11" fill="#fff">30-40 days HRT</text>
+                    
+                    <!-- Biogas Output -->
+                    <path d="M 600 15 L 600 15" stroke="#333" stroke-width="3"/>
+                    <rect x="530" y="15" width="140" height="20" fill="none"/>
+                    <path d="M 600 175 L 600 230" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <text x="650" y="205" font-size="11" fill="#333">Biogas</text>
+                    
+                    <!-- Gas Storage -->
+                    <ellipse cx="600" cy="260" rx="90" ry="40" fill="#ffca28" stroke="#f57f17" stroke-width="3"/>
+                    <text x="600" y="255" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">GAS HOLDER</text>
+                    <text x="600" y="272" text-anchor="middle" font-size="11" fill="#333">Storage Tank</text>
+                    
+                    <!-- Gas Processing -->
+                    <path d="M 600 300 L 600 340" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    
+                    <rect x="520" y="340" width="160" height="70" fill="#ab47bc" stroke="#6a1b9a" stroke-width="3" rx="10"/>
+                    <text x="600" y="365" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">GAS PURIFICATION</text>
+                    <text x="600" y="382" text-anchor="middle" font-size="11" fill="#fff">H₂S & CO₂ Removal</text>
+                    <text x="600" y="398" text-anchor="middle" font-size="11" fill="#fff">Water Vapor Removal</text>
+                    
+                    <!-- Split to applications -->
+                    <path d="M 520 375 L 350 470" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <path d="M 680 375 L 820 470" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    
+                    <!-- Application 1: Cooking -->
+                    <rect x="250" y="470" width="200" height="70" fill="#ff7043" stroke="#d84315" stroke-width="3" rx="10"/>
+                    <text x="350" y="500" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">COOKING & HEATING</text>
+                    <text x="350" y="520" text-anchor="middle" font-size="11" fill="#fff">Direct Gas Combustion</text>
+                    
+                    <!-- Application 2: Power -->
+                    <rect x="720" y="470" width="200" height="70" fill="#5c6bc0" stroke="#283593" stroke-width="3" rx="10"/>
+                    <text x="820" y="495" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">POWER GENERATION</text>
+                    <text x="820" y="515" text-anchor="middle" font-size="11" fill="#fff">Gas Engine/Genset</text>
+                    <text x="820" y="530" text-anchor="middle" font-size="10" fill="#fff">20-30 kW capacity</text>
+                    
+                    <!-- Digestate Output -->
+                    <path d="M 710 120 L 780 120" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    
+                    <rect x="780" y="80" width="110" height="80" fill="#a1887f" stroke="#5d4037" stroke-width="3" rx="10"/>
+                    <text x="835" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">DIGESTATE</text>
+                    <text x="835" y="127" text-anchor="middle" font-size="11" fill="#fff">Solid/Liquid</text>
+                    <text x="835" y="143" text-anchor="middle" font-size="11" fill="#fff">Separation</text>
+                    
+                    <!-- Fertilizer -->
+                    <path d="M 835 160 L 835 220" stroke="#333" stroke-width="3" marker-end="url(#arrow2)"/>
+                    
+                    <rect x="770" y="220" width="130" height="60" fill="#7cb342" stroke="#558b2f" stroke-width="3" rx="10"/>
+                    <text x="835" y="245" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">BIO-FERTILIZER</text>
+                    <text x="835" y="263" text-anchor="middle" font-size="10" fill="#fff">Organic Manure</text>
+                    
+                    <defs>
+                        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#333" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+            
+            <div class="specs">
+                <h4>System Design Parameters for 100 Cattle Dairy Farm</h4>
+                <ul>
+                    <li><strong>Daily Dung Production:</strong> 1500 kg (15 kg per cattle)</li>
+                    <li><strong>Biogas Yield:</strong> 40-45 m³/day (0.03-0.04 m³ per kg dung)</li>
+                    <li><strong>Digester Capacity:</strong> 50-60 m³ (Fixed dome or Floating drum type)</li>
+                    <li><strong>Retention Time:</strong> 30-40 days for mesophilic digestion</li>
+                    <li><strong>Gas Composition:</strong> CH₄ (55-65%), CO₂ (30-35%), H₂S (traces)</li>
+                    <li><strong>Energy Output:</strong> 250-300 kWh/day equivalent thermal energy</li>
+                </ul>
+            </div>
+            
+            <div class="explanation">
+                <h3>System Explanation</h3>
+                <p>
+                    The biomass-based biogas generation system converts organic waste from a 100-cattle dairy farm into valuable energy resources through anaerobic digestion. The process begins with systematic collection of approximately 1500 kg of cattle dung daily, which is mixed with water in a 1:1 ratio to create a homogeneous slurry in the pre-treatment tank. This slurry is then fed into a large anaerobic digester, typically a fixed-dome or floating-drum design with 50-60 cubic meters capacity, where millions of methanogenic bacteria break down the organic matter in oxygen-free conditions.
+                </p>
+                <p>
+                    Operating at mesophilic temperatures between 35-40°C with a hydraulic retention time of 30-40 days, the digester produces biogas containing 55-65% methane and 30-35% carbon dioxide, along with trace amounts of hydrogen sulfide. The generated biogas flows into a storage holder and undergoes purification to remove corrosive hydrogen sulfide and moisture before utilization. The purified biogas can be directly combusted in specially designed stoves for cooking and water heating needs of the farm, or fed into a gas engine-generator set producing 20-30 kW of electricity to power dairy equipment, lighting, and refrigeration systems.
+                </p>
+                <p>
+                    The residual digestate emerging from the digester serves as an additional valuable output, containing nutrient-rich organic matter that undergoes solid-liquid separation to produce high-quality bio-fertilizer for agricultural applications. This integrated system exemplifies circular economy principles by transforming waste management challenges into economic opportunities, reducing greenhouse gas emissions from unmanaged manure decomposition, eliminating chemical fertilizer dependency, and providing energy independence for rural dairy operations. Such systems are widely successful in India, China, and European dairy farms, demonstrating sustainable agricultural practices.
+                </p>
+            </div>
+        </section>
+
+        <!-- Activity 3: Geothermal -->
+        <section id="activity3" class="activity-section">
+            <h2>Activity 3: Geothermal Power Plant System for Electricity Generation</h2>
+            
+            <div class="diagram-container">
+                <h3>System Block Diagram (Binary Cycle Type)</h3>
+                <svg viewBox="0 0 950 700" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Production Well -->
+                    <rect x="50" y="200" width="120" height="250" fill="#795548" stroke="#3e2723" stroke-width="3" rx="5"/>
+                    <text x="110" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">PRODUCTION</text>
+                    <text x="110" y="250" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">WELL</text>
+                    
+                    <!-- Underground reservoir -->
+                    <ellipse cx="110" cy="520" rx="80" ry="50" fill="#d32f2f" stroke="#b71c1c" stroke-width="3"/>
+                    <text x="110" y="515" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">HOT WATER</text>
+                    <text x="110" y="532" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">RESERVOIR</text>
+                    <text x="110" y="548" text-anchor="middle" font-size="10" fill="#fff">150-180°C</text>
+                    
+                    <!-- Arrow up from reservoir -->
+                    <path d="M 110 470 L 110 450" stroke="#333" stroke-width="4" marker-end="url(#arrow3)"/>
+                    <text x="130" y="460" font-size="10" fill="#d32f2f">Hot Brine</text>
+                    
+                    <!-- Geothermal Fluid line -->
+                    <path d="M 170 250 L 240 250" stroke="#d32f2f" stroke-width="4" marker-end="url(#arrow3)"/>
+                    <text x="205" y="240" text-anchor="middle" font-size="10" fill="#d32f2f">150-180°C</text>
+                    
+                    <!-- Heat Exchanger -->
+                    <rect x="240" y="200" width="180" height="100" fill="#ff9800" stroke="#e65100" stroke-width="3" rx="10"/>
+                    <text x="330" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff">HEAT EXCHANGER</text>
+                    <text x="330" y="250" text-anchor="middle" font-size="11" fill="#fff">(Primary/Secondary)</text>
+                    <text x="330" y="270" text-anchor="middle" font-size="11" fill="#fff">Heat Transfer</text>
+                    
+                    <!-- Secondary fluid loop -->
+                    <path d="M 330 200 L 330 160 L 500 160" stroke="#1976d2" stroke-width="3" marker-end="url(#arrow3)"/>
+                    <text x="415" y="150" text-anchor="middle" font-size="10" fill="#1976d2">Working Fluid Vapor</text>
+                    
+                    <!-- Turbine -->
+                    <circle cx="530" cy="160" r="50" fill="#4caf50" stroke="#1b5e20" stroke-width="3"/>
+                    <path d="M 530 130 L 550 160 L 530 190 L 510 160 Z" fill="#fff"/>
+                    <text x="530" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">TURBINE</text>
+                    
+                    <!-- Generator -->
+                    <rect x="610" y="130" width="100" height="60" fill="#9c27b0" stroke="#4a148c" stroke-width="3" rx="8"/>
+                    <text x="660" y="157" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">GENERATOR</text>
+                    <text x="660" y="175" text
